@@ -1,3 +1,12 @@
+<?php
+include ("connection.php");
+
+$con = connection();
+
+$sql = "SELECT *FROM usuarios";
+$query = mysqli_query($con, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +16,7 @@
 </head>
 <body>
     <div>
-        <form action="">
+        <form action="insertar.php", method="POST">
             <h1>Crear Usuario</h1>
 
             <input type="text" name="name" placeholder="Nombre">
@@ -38,17 +47,19 @@
             </thead>
 
             <tbody>
+                <?php while($row = mysqli_fetch_array($query)): ?>
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th><?= $row["id"] ?></th>
+                <th><?= $row["name"] ?></th>
+                <th><?= $row["lastname"] ?></th>
+                <th><?= $row["username"] ?></th>
+                <th><?= $row["password"] ?></th>
+                <th><?= $row["email"] ?></th>
 
                 <th><a href="">Editar</a></th>
                 <th><a href="">Eliminar</a></th>
             </tr>
+                <?php endwhile; ?>
             </tbody>
         </table>
     </div>
