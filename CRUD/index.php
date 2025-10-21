@@ -56,8 +56,8 @@ $query = mysqli_query($con, $sql);
                 <th><?= $row["password"] ?></th>
                 <th><?= $row["email"] ?></th>
 
-                <th><a href="">Editar</a></th>
-                <th><a href="">Eliminar</a></th>
+                <th><a href="actualizar.php?id=<?= $row["id"] ?>">Editar</a></th>
+                <th><a href="eliminar.php?id=<?= $row["id"] ?>">Eliminar</a></th>
             </tr>
                 <?php endwhile; ?>
             </tbody>
