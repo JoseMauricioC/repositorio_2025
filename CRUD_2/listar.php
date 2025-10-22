@@ -2,7 +2,7 @@
 include('conexion.php');
 
 $sql = "SELECT p.nombre, p.apellido, p.direccion, p.fecha_nacimiento, p.sexo,
-p.telefono, f.profesion FROM personas p INNER JOIN profesiones f ON f.id = p.profesion_id";
+p.telefono, f.profesion FROM personas p LEFT JOIN profesiones f ON f.id = p.profesion_id";
 
 $consulta = mysqli_query($con, $sql);
 ?>
