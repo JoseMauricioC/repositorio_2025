@@ -1,3 +1,12 @@
+<?php
+include('conexion.php');
+
+$sql = "SELECT p.nombre, p.apellido, p.direccion, p.fecha_nacimiento, p.sexo,
+p.telefono, f.profesion FROM personas p INNER JOIN profesiones f ON f.id = p.profesion_id";
+
+$consulta = mysqli_query($con, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,16 +28,18 @@
                 <th>Profesion</th>
                 <th>Acciones</th>
             </tr>
+            <?php while($fila=mysqli_fetch_array($consulta)) {?>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><?php echo $fila["nombre"];?></td>
+                <td><?php echo $fila["apellido"];?></td>
+                <td><?php echo $fila["direccion"];?></td>
+                <td><?php echo $fila["fecha_nacimiento"];?></td>
+                <td><?php echo $fila["sexo"];?></td>
+                <td><?php echo $fila["telefono"];?></td>
+                <td><?php echo $fila["profesion"];?></td>
                 <td><a href="">Editar</a> <a href="">Eliminar</a></td>
             </tr>
+            <?php    } ?>
         </table>
 
         <a href="form_registrar.html">Registrar Nuevo</a>
