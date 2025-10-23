@@ -1,7 +1,7 @@
 <?php
 include('conexion.php');
 
-$sql = "SELECT p.nombre, p.apellido, p.direccion, p.fecha_nacimiento, p.sexo,
+$sql = "SELECT p.id, p.nombre, p.apellido, p.direccion, p.fecha_nacimiento, p.sexo,
 p.telefono, f.profesion FROM personas p LEFT JOIN profesiones f ON f.id = p.profesion_id";
 
 $consulta = mysqli_query($con, $sql);
@@ -37,7 +37,7 @@ $consulta = mysqli_query($con, $sql);
                 <td><?php echo $fila["sexo"];?></td>
                 <td><?php echo $fila["telefono"];?></td>
                 <td><?php echo $fila["profesion"];?></td>
-                <td><a href="">Editar</a> <a href="">Eliminar</a></td>
+                <td><a href="">Editar</a> <a href="eliminar.php?id=<?php echo $fila["id"] ?>">Eliminar</a></td>
             </tr>
             <?php    } ?>
         </table>
