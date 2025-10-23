@@ -37,7 +37,7 @@ $consulta = mysqli_query($con, $sql);
                 <td><?php echo $fila["sexo"];?></td>
                 <td><?php echo $fila["telefono"];?></td>
                 <td><?php echo $fila["profesion"];?></td>
-                <td><a href="">Editar</a> <a href="eliminar.php?id=<?php echo $fila["id"] ?>">Eliminar</a></td>
+                <td><a href="form_editar.php?id=<?php echo $fila['id'] ?>">Editar</a> <a href="eliminar.php?id=<?php echo $fila["id"] ?>">Eliminar</a></td>
             </tr>
             <?php    } ?>
         </table>
