@@ -42,7 +42,7 @@ $consulta = mysqli_query($con, $sql);
             <?php    } ?>
         </table>
 
-        <a href="form_registrar.html">Registrar Nuevo</a>
+        <a href="form_registrar.php">Registrar Nuevo</a>
     </div>
 </body>
 </html>

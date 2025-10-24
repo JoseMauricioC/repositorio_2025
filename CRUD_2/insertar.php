@@ -8,9 +8,10 @@ $direccion = $_POST["direccion"];
 $fe_nac = $_POST["fecha_nacimiento"];
 $sexo = $_POST["sexo"];
 $telefono = $_POST["telefono"];
+$profesion = $_POST['profesion_id'];
 
-$sql = "INSERT INTO personas(nombre, apellido, direccion, fecha_nacimiento, sexo, telefono) 
-VALUES('$nombre', '$apellido', '$direccion', '$fe_nac', '$sexo', $telefono)";
+$sql = "INSERT INTO personas(nombre, apellido, direccion, fecha_nacimiento, sexo, telefono, profesion_id) 
+VALUES('$nombre', '$apellido', '$direccion', '$fe_nac', '$sexo', $telefono, '$profesion')";
 
 mysqli_query($con,$sql);
 

@@ -11,10 +11,13 @@
 
     $id = $_GET['id'];
     $sql = "SELECT id, nombre, apellido, direccion, fecha_nacimiento, sexo,
-    telefono FROM personas WHERE id='$id'";
+    telefono, profesion_id FROM personas WHERE id='$id'";
 
     $consulta = mysqli_query($con, $sql);
     $fila = mysqli_fetch_array($consulta);
+
+    $sql2 = "SELECT id, profesion FROM profesiones";
+    $resultado = mysqli_query($con, $sql2);
     ?>
     <div>
     <form action="editar.php" method="POST">
@@ -32,7 +35,15 @@
         <br>
         Telefono: <input type="number" name="telefono" value="<?php echo $fila['telefono'] ?>">
         <br>
-        Profesion: <input type="text" name="profesion_id">
+        Profesion:<select name="profesion_id">
+            <?php while($fila2 = mysqli_fetch_array($resultado)) {?>
+                <option value="<?php echo $fila2['id']; ?>"
+                 <?php if($fila2['id']==$fila['profesion_id']){
+                    echo 'selected';
+                 } ?>>
+                <?php echo $fila2['profesion']; ?></option>
+            <?php  } ?>
+        </select>
         <br>
         <input type="submit" value="actualizar">
     </form>

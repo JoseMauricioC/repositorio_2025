@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+        include('conexion.php');
+        $sql = "SELECT id, profesion FROM profesiones";
+        $resultado = mysqli_query($con, $sql);
+    ?>
     <div>
         <form action="insertar.php" method="POST">
         Nombre: <input type="text" name="nombre">
@@ -21,7 +26,11 @@
         <br>
         Telefono: <input type="number" name="telefono">
         <br>
-        Profesion: <input type="text" name="profesion_id">
+        Profesion:<select name="profesion_id">
+            <?php while($fila = mysqli_fetch_array($resultado)) {?>
+                <option value="<?php echo $fila['id']; ?>"><?php echo $fila['profesion']; ?></option>
+            <?php  } ?>
+        </select>
         <br>
         <input type="submit" value="Registrar">
     </form>
